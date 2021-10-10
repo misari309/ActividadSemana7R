@@ -7,6 +7,8 @@ package Admin;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import static java.lang.String.valueOf;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -26,31 +28,74 @@ public class Admin_frame extends javax.swing.JFrame {
     /**
      * Creates new form Admin_frame
      */
+    
+    
     public Admin_frame() {
         initComponents();
         setSize(850, 600);
         setResizable(false);
         setLocationRelativeTo(this);
         
-        input_marca.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                mostrarLineaVehiculosComboBox((String) input_marca.getSelectedItem());
+        
+        input_marca.addItemListener( new ItemListener(){
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if ( e.getStateChange() == ItemEvent.SELECTED ) 
+                {
+                    String seleccion = valueOf(input_marca.getSelectedItem());
+                    input_linea.removeAllItems();
+                    String linea_a = "las"; 
+                    for (int i=0; i<vehiculos_disponibles.size(); i++) {
+                        if(seleccion.equals(vehiculos_disponibles.get(i).getMarca())){
+                             if (linea_a != vehiculos_disponibles.get(i).getLinea()) {
+                                 input_linea.addItem(vehiculos_disponibles.get(i).getLinea());
+                                 linea_a = vehiculos_disponibles.get(i).getLinea();
+                            }
+                        }  
+                    }
+                }
             }
-            
-            
         });
         
-        input_linea.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                mostrarAgnioVehiculosComboBox((String) input_linea.getSelectedItem());      
+        input_linea.addItemListener( new ItemListener(){
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if ( e.getStateChange() == ItemEvent.SELECTED ) 
+                {
+                    String seleccion = valueOf(input_linea.getSelectedItem());
+                    input_agnio.removeAllItems();
+                    String linea_a = "las"; 
+                    for (int i=0; i<vehiculos_disponibles.size(); i++) {
+                        if(seleccion.equals(vehiculos_disponibles.get(i).getLinea())){
+                             if (linea_a != vehiculos_disponibles.get(i).getAgnio()) {
+                                 input_agnio.addItem(vehiculos_disponibles.get(i).getAgnio());
+                                 linea_a = vehiculos_disponibles.get(i).getAgnio();
+                            }
+                        }            
+                    }
+                }
             }
         });
         
-        input_agnio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                agregarValor((String) input_agnio.getSelectedItem());      
+        input_agnio.addItemListener( new ItemListener(){
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if ( e.getStateChange() == ItemEvent.SELECTED ) 
+                {
+                    String seleccion = valueOf(input_agnio.getSelectedItem());
+                    for (int i=0; i<vehiculos_disponibles.size(); i++) {
+                        if (seleccion.equals(vehiculos_disponibles.get(i).getAgnio())) {
+                            input_valor.setText(valueOf(vehiculos_disponibles.get(i).getValorI()));
+                        }
+                    }
+                }
             }
         });
+
+        
         
         
         panel_desc.setVisible(false);
@@ -408,32 +453,6 @@ public class Admin_frame extends javax.swing.JFrame {
                 input_marca.addItem(vehiculos_disponibles.get(i).getMarca());
                 marca_p = vehiculos_disponibles.get(i).getMarca();
             }        
-        }
-    }
-      
-    public void mostrarLineaVehiculosComboBox(String seleccion){
-        input_linea.removeAllItems();
-        String linea_a = "las"; 
-        for (int i=0; i<vehiculos_disponibles.size(); i++) {
-            if(seleccion.equals(vehiculos_disponibles.get(i).getMarca())){
-                 if (linea_a != vehiculos_disponibles.get(i).getLinea()) {
-                     input_linea.addItem(vehiculos_disponibles.get(i).getLinea());
-                     linea_a = vehiculos_disponibles.get(i).getLinea();
-                 }
-            }  
-        }
-    }
-    
-    public void mostrarAgnioVehiculosComboBox(String seleccion){
-        input_agnio.removeAllItems();
-        String linea_a = "las"; 
-        for (int i=0; i<vehiculos_disponibles.size(); i++) {
-            if(seleccion.equals(vehiculos_disponibles.get(i).getLinea())){
-                 if (linea_a != vehiculos_disponibles.get(i).getAgnio()) {
-                     input_agnio.addItem(vehiculos_disponibles.get(i).getAgnio());
-                     linea_a = vehiculos_disponibles.get(i).getAgnio();
-                 }
-            }  
         }
     }
     
