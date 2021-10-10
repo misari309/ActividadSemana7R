@@ -102,11 +102,13 @@ public class Principal_frame extends javax.swing.JFrame {
     private void btn_propietario_frameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_propietario_frameActionPerformed
         Propietario_frame propietario_frame = new Propietario_frame();
         propietario_frame.setVisible(true);
+        
     }//GEN-LAST:event_btn_propietario_frameActionPerformed
 
     private void btn_admin_frameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_admin_frameActionPerformed
         Admin_frame admin_frame = new Admin_frame();
         admin_frame.setVisible(true);
+        
     }//GEN-LAST:event_btn_admin_frameActionPerformed
 
     /**

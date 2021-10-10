@@ -473,6 +473,13 @@ public class Admin_frame extends javax.swing.JFrame {
         
     }
     
+    
+    public int tamaño(){//AGREGUE ESTE METODO PARA DEFINIR EL TAMAÑO
+        return vehiculos_disponibles.size();
+    }
+    
+    
+    
     public Vehiculo buscar(int codigo){//ESTE METODO LO AGREGUE PARA PODER RETORNAR EL CDIGO Y BUSCAR LA INFORMACION PERTENENCIENTE AL MISMO..HC
         for (int i = 0; i <vehiculos_disponibles.size() ; i++) {
             if(vehiculos_disponibles.get(i).getCodigo() == codigo)
@@ -480,6 +487,7 @@ public class Admin_frame extends javax.swing.JFrame {
         }
         return null;
     }
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cambiar_desc;

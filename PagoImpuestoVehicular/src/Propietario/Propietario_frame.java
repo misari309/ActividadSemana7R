@@ -53,7 +53,7 @@ public class Propietario_frame extends javax.swing.JFrame {
         boxServicioPublico = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         boxTransladoDeCuenta.setText("TANSLADO DE CUENTA");
 
@@ -247,9 +247,9 @@ public class Propietario_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMarcaActionPerformed
 static public String opcion;
     private void btnImprimirComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirComprobanteActionPerformed
-        //Factura ventana = new Factura();
+        Factura ventana = new Factura();
         //Comprobante ventanaComp = new Comprobante();
-        //setVisible(true);
+        
         //String mensaje = "seleciono la opcion : ";
         opcion = "seleciono la opcion : ";
         if(boxProntoPago.isSelected()/*&&boxServicioPublico.isSelected()&&boxTransladoDeCuenta.isSelected()*/){
@@ -269,7 +269,8 @@ static public String opcion;
         }
         //System.out.println(mensaje);
         //opcion = mensaje;
-        //ventana.setVisible(true);
+        ventana.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_btnImprimirComprobanteActionPerformed
 
