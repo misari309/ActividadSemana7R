@@ -29,6 +29,8 @@ public class Propietario_frame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        boxTransladoDeCuenta = new javax.swing.JCheckBox();
+        txtValor = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -37,19 +39,19 @@ public class Propietario_frame extends javax.swing.JFrame {
         btnImprimirComprobante = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btnBuscar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtModelo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtAño = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         boxProntoPago = new javax.swing.JCheckBox();
+        btnBuscar = new javax.swing.JButton();
         boxServicioPublico = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
-        boxTransladoDeCuenta = new javax.swing.JCheckBox();
-        txtValor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        boxTransladoDeCuenta.setText("TANSLADO DE CUENTA");
 
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -94,13 +96,6 @@ public class Propietario_frame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnBuscar.setText("BUSCAR");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("MODELO : ");
 
         txtModelo.addActionListener(new java.awt.event.ActionListener() {
@@ -126,11 +121,16 @@ public class Propietario_frame extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         boxServicioPublico.setText("SERVICIO PÚBLICO");
 
         jLabel6.setText("VALOR : ");
-
-        boxTransladoDeCuenta.setText("TANSLADO DE CUENTA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
