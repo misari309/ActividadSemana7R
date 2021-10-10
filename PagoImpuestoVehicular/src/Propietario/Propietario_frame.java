@@ -29,14 +29,6 @@ public class Propietario_frame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        txtModelo = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtAño = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        boxProntoPago = new javax.swing.JCheckBox();
-        boxServicioPublico = new javax.swing.JCheckBox();
-        boxTransladoDeCuenta = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -46,34 +38,18 @@ public class Propietario_frame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtModelo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtAño = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        boxProntoPago = new javax.swing.JCheckBox();
+        boxServicioPublico = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
+        boxTransladoDeCuenta = new javax.swing.JCheckBox();
         txtValor = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel4.setText("MODELO : ");
-
-        txtModelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtModeloActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("AÑO :");
-
-        txtAño.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAñoActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("DESCUENTOS : ");
-
-        boxProntoPago.setText("PRONTO PAGO");
-
-        boxServicioPublico.setText("SERVICIO PÚBLICO");
-
-        boxTransladoDeCuenta.setText("TANSLADO DE CUENTA");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -125,7 +101,36 @@ public class Propietario_frame extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("MODELO : ");
+
+        txtModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtModeloActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("AÑO :");
+
+        txtAño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAñoActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("DESCUENTOS : ");
+
+        boxProntoPago.setText("PRONTO PAGO");
+        boxProntoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxProntoPagoActionPerformed(evt);
+            }
+        });
+
+        boxServicioPublico.setText("SERVICIO PÚBLICO");
+
         jLabel6.setText("VALOR : ");
+
+        boxTransladoDeCuenta.setText("TANSLADO DE CUENTA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -236,22 +241,66 @@ public class Propietario_frame extends javax.swing.JFrame {
     private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
         txtMarca.setEditable(false);
     }//GEN-LAST:event_txtMarcaActionPerformed
-
+static public String opcion;
     private void btnImprimirComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirComprobanteActionPerformed
-        
-        
-        
+        //Factura ventana = new Factura();
+        //Comprobante ventanaComp = new Comprobante();
+        //setVisible(true);
+        //String mensaje = "seleciono la opcion : ";
+        opcion = "seleciono la opcion : ";
+        if(boxProntoPago.isSelected()/*&&boxServicioPublico.isSelected()&&boxTransladoDeCuenta.isSelected()*/){
+            //mensaje="PRONTO PAGO";
+            opcion= "PRONTO PAGO";
+        }
+        if(boxServicioPublico.isSelected()/*!=boxProntoPago.isSelected()!=boxTransladoDeCuenta.isSelected()*/){
+            //mensaje="SERVICIO PÚBLICO";
+            opcion= "SERIVCIO PÚBLICO";
+        }
+        if(boxTransladoDeCuenta.isSelected()/*!=boxProntoPago.isSelected()!=boxServicioPublico.isSelected()*/){
+            //mensaje="TRANSLADO DE CUENTA";
+        }
+        if(boxProntoPago.isSelected()&&boxServicioPublico.isSelected()&&boxTransladoDeCuenta.isSelected()){
+            // mensaje="SELECCIONO LOS TRES DESCUENTOS";
+            //JOptionPane.showMessageDialog(rootPane, "SELECCIONÓ : 3");
+        }
+        //System.out.println(mensaje);
+        //opcion = mensaje;
+        //ventana.setVisible(true);
+
     }//GEN-LAST:event_btnImprimirComprobanteActionPerformed
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        
+
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     public static String ma="";
+    public static String m="";
+    public static String a="";
+    public static String va="";
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        try {
+            int codigo = leerCodigo();
+            if(ap.buscar(codigo)!=null){
+                txtMarca.setText(ap.buscar(codigo).getMarca());
 
-        
+                txtAño.setText(ap.buscar(codigo).getAgnio());
+                txtModelo.setText(ap.buscar(codigo).getLinea());
+                txtValor.setText(" "+ap.buscar(codigo).getValorI());
+
+                ma = txtMarca.getText();
+                m = txtModelo.getText();
+                a = txtAño.getText();
+                va = txtValor.getText();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "INGRESE UN CÓDIGO VÁLIDO");
+        }
+
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void boxProntoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxProntoPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxProntoPagoActionPerformed
     
     int leerCodigo(){
        return Integer.parseInt(txtCodigo.getText().trim());
