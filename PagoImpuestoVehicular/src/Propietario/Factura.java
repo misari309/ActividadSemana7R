@@ -23,6 +23,7 @@ public class Factura extends javax.swing.JFrame {
         impModelo.setText(ventan.m);
         impAño.setText(ventan.a);
         impValor.setText(ventan.va);
+        impDescuentosAplicados.setText(ventan.opcion);
         
     }
     
