@@ -54,9 +54,9 @@ public class Admin_frame extends javax.swing.JFrame {
         
         
         panel_desc.setVisible(false);
-        descPPL.setText(valueOf(descProntoPago*100));
-        descSPL.setText(valueOf(descServPublico*100));
-        descTCL.setText(valueOf(descTrasCuenta*100));
+        descPPL.setText(valueOf(descProntoPago));
+        descSPL.setText(valueOf(descServPublico));
+        descTCL.setText(valueOf(descTrasCuenta));
         mostrarTabla();
         rellenarAutosDisponibles();
         mostrarMarcasVehiculosComboBox();
@@ -313,18 +313,22 @@ public class Admin_frame extends javax.swing.JFrame {
         panel_desc.setVisible(true);
         input_descPP.setText(valueOf(descProntoPago));  
         input_descSP.setText(valueOf(descServPublico));
-        input_descTC.setText(valueOf(descTrasCuenta));// TODO add your handling code here:
+        input_descTC.setText(valueOf(descTrasCuenta));
     }//GEN-LAST:event_btn_panel_cambiar_descActionPerformed
 
     private void btn_cambiar_descActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cambiar_descActionPerformed
        try {
-            descProntoPago = Float.parseFloat(input_descPP.getText())/100;
-            descServPublico = Float.parseFloat(input_descPP.getText())/100;
-            descTrasCuenta = Float.parseFloat(input_descTC.getText())/100;
+            descProntoPago = Double.parseDouble(input_descPP.getText());
+            descServPublico = Double.parseDouble(input_descSP.getText());
+            descTrasCuenta = Double.parseDouble(input_descTC.getText());
             
-            descPPL.setText(valueOf(descProntoPago*100));
-            descSPL.setText(valueOf(descServPublico*100));
-            descTCL.setText(valueOf(descTrasCuenta*100));
+            descPPL.setText(valueOf(descProntoPago));
+            descSPL.setText(valueOf(descServPublico));
+            descTCL.setText(valueOf(descTrasCuenta));
+            
+            panel_desc.setVisible(false);
+            
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Introduzca el porcentaje a descontar.");
         }
