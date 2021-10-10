@@ -98,6 +98,7 @@ public class Admin_frame extends javax.swing.JFrame {
         input_descSP = new javax.swing.JTextField();
         input_descTC = new javax.swing.JTextField();
         btn_cambiar_desc = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -264,6 +265,10 @@ public class Admin_frame extends javax.swing.JFrame {
 
         getContentPane().add(panel_desc);
         panel_desc.setBounds(550, 410, 230, 100);
+
+        jLabel10.setText("Admin");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(680, 20, 48, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -484,6 +489,7 @@ public class Admin_frame extends javax.swing.JFrame {
     private javax.swing.JLabel input_valor;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
