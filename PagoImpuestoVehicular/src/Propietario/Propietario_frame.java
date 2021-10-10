@@ -8,9 +8,9 @@ package Propietario;
 import Admin.*;
 import javax.swing.JOptionPane;
 import static pagoimpuestovehicular.Principal_frame.lista_vehiculos;
-import static pagoimpuestovehicular.Principal_frame.lista_vehiculos;
 import static java.lang.String.valueOf;
 import pagoimpuestovehicular.Vehiculo;
+import pagoimpuestovehicular.*;
 
 /**
  *
@@ -25,8 +25,10 @@ public class Propietario_frame extends javax.swing.JFrame {
         setLocationRelativeTo(this);
     }
    
-    Admin_frame ap = new Admin_frame();
+    Principal_frame ap = new Principal_frame();
     
+    public static int Sub;
+    public static int Subtotal;
 
  
     @SuppressWarnings("unchecked")
@@ -282,6 +284,7 @@ static public String opcion;
     public static String m="";
     public static String a="";
     public static String va="";
+    
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
             int codigo = leerCodigo();
@@ -291,15 +294,20 @@ static public String opcion;
                 txtAño.setText(ap.buscar(codigo).getAgnio());
                 txtModelo.setText(ap.buscar(codigo).getLinea());
                 txtValor.setText(" "+ap.buscar(codigo).getValorI());
-
-                ma = txtMarca.getText();
-                m = txtModelo.getText();
-                a = txtAño.getText();
-                va = txtValor.getText();
+                
+        
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "INGRESE UN CÓDIGO VÁLIDO");
         }
+        
+                ma = txtMarca.getText();
+                m = txtModelo.getText();
+                a = txtAño.getText();
+                va = txtValor.getText();
+                
+                
+                Sub = Integer.parseInt(va);
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 

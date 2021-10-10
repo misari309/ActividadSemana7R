@@ -37,6 +37,14 @@ public class Principal_frame extends javax.swing.JFrame {
         descTrasCuenta = 0.1;
         
     }
+    
+    public Vehiculo buscar(int codigo){//ESTE METODO LO AGREGUE PARA PODER RETORNAR EL CDIGO Y BUSCAR LA INFORMACION PERTENENCIENTE AL MISMO..HC
+        for (int i = 0; i <lista_vehiculos.size() ; i++) {
+            if(lista_vehiculos.get(i).getCodigo() == codigo)
+                return lista_vehiculos.get(i);
+        }
+        return null;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
