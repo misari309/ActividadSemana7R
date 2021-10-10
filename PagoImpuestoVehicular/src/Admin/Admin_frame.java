@@ -9,7 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.String.valueOf;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import static pagoimpuestovehicular.Principal_frame.lista_vehiculos;
+import static pagoimpuestovehicular.Principal_frame.descProntoPago;
+import static pagoimpuestovehicular.Principal_frame.descServPublico;
+import static pagoimpuestovehicular.Principal_frame.descTrasCuenta;
 import pagoimpuestovehicular.Vehiculo;
 
 
@@ -48,6 +52,11 @@ public class Admin_frame extends javax.swing.JFrame {
             }
         });
         
+        
+        panel_desc.setVisible(false);
+        descPPL.setText(valueOf(descProntoPago*100));
+        descSPL.setText(valueOf(descServPublico*100));
+        descTCL.setText(valueOf(descTrasCuenta*100));
         mostrarTabla();
         rellenarAutosDisponibles();
         mostrarMarcasVehiculosComboBox();
@@ -77,8 +86,21 @@ public class Admin_frame extends javax.swing.JFrame {
         input_linea = new javax.swing.JComboBox<>();
         input_agnio = new javax.swing.JComboBox<>();
         input_valor = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        descTCL = new javax.swing.JLabel();
+        descPPL = new javax.swing.JLabel();
+        descSPL = new javax.swing.JLabel();
+        btn_panel_cambiar_desc = new javax.swing.JButton();
+        panel_desc = new javax.swing.JPanel();
+        input_descPP = new javax.swing.JTextField();
+        input_descSP = new javax.swing.JTextField();
+        input_descTC = new javax.swing.JTextField();
+        btn_cambiar_desc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         table_vehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,6 +124,9 @@ public class Admin_frame extends javax.swing.JFrame {
         table_vehiculos.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(table_vehiculos);
         table_vehiculos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(28, 39, 529, 326);
 
         jPanel2.setForeground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(null);
@@ -163,26 +188,82 @@ public class Admin_frame extends javax.swing.JFrame {
         jPanel2.add(input_valor);
         input_valor.setBounds(100, 230, 140, 20);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(575, 39, 260, 326);
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        jLabel7.setText("Descuento por servicio público (%):");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(28, 454, 228, 24);
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        jLabel8.setText("Descuento por pronto pago (%): ");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(28, 412, 209, 24);
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        jLabel9.setText("Descuento por traslado de cuenta (%):");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(30, 490, 248, 24);
+
+        descTCL.setText("jLabel10");
+        getContentPane().add(descTCL);
+        descTCL.setBounds(300, 490, 70, 16);
+
+        descPPL.setText("jLabel10");
+        getContentPane().add(descPPL);
+        descPPL.setBounds(300, 410, 70, 16);
+
+        descSPL.setText("jLabel10");
+        getContentPane().add(descSPL);
+        descSPL.setBounds(300, 450, 70, 16);
+
+        btn_panel_cambiar_desc.setText("Cambiar valores");
+        btn_panel_cambiar_desc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_panel_cambiar_descActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_panel_cambiar_desc);
+        btn_panel_cambiar_desc.setBounds(380, 490, 140, 24);
+
+        btn_cambiar_desc.setText("Cambiar");
+        btn_cambiar_desc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cambiar_descActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_descLayout = new javax.swing.GroupLayout(panel_desc);
+        panel_desc.setLayout(panel_descLayout);
+        panel_descLayout.setHorizontalGroup(
+            panel_descLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_descLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_descLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(input_descTC, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(input_descPP, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(input_descSP, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(31, 31, 31)
+                .addComponent(btn_cambiar_desc, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
-                .addGap(235, 235, 235))
+        panel_descLayout.setVerticalGroup(
+            panel_descLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_descLayout.createSequentialGroup()
+                .addComponent(input_descPP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(input_descSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(input_descTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_descLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_cambiar_desc))
         );
+
+        getContentPane().add(panel_desc);
+        panel_desc.setBounds(550, 410, 230, 100);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,6 +308,28 @@ public class Admin_frame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btn_panel_cambiar_descActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_panel_cambiar_descActionPerformed
+        panel_desc.setVisible(true);
+        input_descPP.setText(valueOf(descProntoPago));  
+        input_descSP.setText(valueOf(descServPublico));
+        input_descTC.setText(valueOf(descTrasCuenta));// TODO add your handling code here:
+    }//GEN-LAST:event_btn_panel_cambiar_descActionPerformed
+
+    private void btn_cambiar_descActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cambiar_descActionPerformed
+       try {
+            descProntoPago = Float.parseFloat(input_descPP.getText())/100;
+            descServPublico = Float.parseFloat(input_descPP.getText())/100;
+            descTrasCuenta = Float.parseFloat(input_descTC.getText())/100;
+            
+            descPPL.setText(valueOf(descProntoPago*100));
+            descSPL.setText(valueOf(descServPublico*100));
+            descTCL.setText(valueOf(descTrasCuenta*100));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Introduzca el porcentaje a descontar.");
+        }
+      
+    }//GEN-LAST:event_btn_cambiar_descActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,8 +465,16 @@ public class Admin_frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cambiar_desc;
+    private javax.swing.JButton btn_panel_cambiar_desc;
+    private javax.swing.JLabel descPPL;
+    private javax.swing.JLabel descSPL;
+    private javax.swing.JLabel descTCL;
     private javax.swing.JComboBox<String> input_agnio;
     private javax.swing.JTextField input_codigo;
+    private javax.swing.JTextField input_descPP;
+    private javax.swing.JTextField input_descSP;
+    private javax.swing.JTextField input_descTC;
     private javax.swing.JComboBox<String> input_linea;
     private javax.swing.JComboBox<String> input_marca;
     private javax.swing.JLabel input_valor;
@@ -374,8 +485,12 @@ public class Admin_frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panel_desc;
     private javax.swing.JTable table_vehiculos;
     // End of variables declaration//GEN-END:variables
 }

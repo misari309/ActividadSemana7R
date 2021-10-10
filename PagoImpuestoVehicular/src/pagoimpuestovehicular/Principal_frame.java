@@ -15,6 +15,9 @@ import java.util.ArrayList;
  */
 public class Principal_frame extends javax.swing.JFrame {
     public static ArrayList<Vehiculo>lista_vehiculos=new ArrayList<>();
+    public static double descProntoPago;
+    public static double descServPublico;
+    public static double descTrasCuenta;
 
     /**
      * Creates new form Principal_frame
@@ -28,6 +31,11 @@ public class Principal_frame extends javax.swing.JFrame {
         lista_vehiculos.add(new Vehiculo("CHEVROLET", "AVEO", "2006", 1, Float.parseFloat("14000")));
         lista_vehiculos.add(new Vehiculo("RENAULT", "ZOE", "2016", 2, Float.parseFloat("13000")));
         lista_vehiculos.add(new Vehiculo("NISSAN", "SENTRA", "1995", 3, Float.parseFloat("7000")));
+        
+        descProntoPago = 0.2;
+        descServPublico = 0.15;
+        descTrasCuenta = 0.1;
+        
     }
 
     /**
