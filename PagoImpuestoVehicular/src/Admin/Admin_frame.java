@@ -37,13 +37,13 @@ public class Admin_frame extends javax.swing.JFrame {
         });
         
         input_linea.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg1) {
+            public void actionPerformed(ActionEvent arg0) {
                 mostrarAgnioVehiculosComboBox((String) input_linea.getSelectedItem());      
             }
         });
         
         input_agnio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg1) {
+            public void actionPerformed(ActionEvent arg0) {
                 agregarValor((String) input_agnio.getSelectedItem());      
             }
         });
@@ -77,8 +77,6 @@ public class Admin_frame extends javax.swing.JFrame {
         input_linea = new javax.swing.JComboBox<>();
         input_agnio = new javax.swing.JComboBox<>();
         input_valor = new javax.swing.JLabel();
-        desc1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -160,24 +158,10 @@ public class Admin_frame extends javax.swing.JFrame {
         jPanel2.add(input_linea);
         input_linea.setBounds(100, 150, 140, 26);
 
-        input_agnio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                input_agnioActionPerformed(evt);
-            }
-        });
         jPanel2.add(input_agnio);
         input_agnio.setBounds(100, 190, 140, 26);
         jPanel2.add(input_valor);
         input_valor.setBounds(100, 230, 140, 20);
-
-        desc1.setText("jTextField1");
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,12 +173,6 @@ public class Admin_frame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(desc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jButton2)
-                .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,11 +181,7 @@ public class Admin_frame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
-                .addGap(91, 91, 91)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(desc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(120, 120, 120))
+                .addGap(235, 235, 235))
         );
 
         pack();
@@ -388,14 +362,12 @@ public class Admin_frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField desc1;
     private javax.swing.JComboBox<String> input_agnio;
     private javax.swing.JTextField input_codigo;
     private javax.swing.JComboBox<String> input_linea;
     private javax.swing.JComboBox<String> input_marca;
     private javax.swing.JLabel input_valor;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
