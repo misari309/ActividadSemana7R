@@ -348,6 +348,7 @@ static public String opcion;
             matriz[i][3]=lista_vehiculos.get(i).getAgnio();
             matriz[i][4]=valueOf(lista_vehiculos.get(i).getValorI());
 
+            //lista_vehiculos
         }
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             matriz,

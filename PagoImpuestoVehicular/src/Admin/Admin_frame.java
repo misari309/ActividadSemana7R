@@ -135,34 +135,34 @@ public class Admin_frame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jLabel1.setText("Agregar Auto");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(80, 20, 110, 24);
+        jLabel1.setBounds(80, 20, 110, 23);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jLabel2.setText("Valor:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(20, 230, 60, 24);
+        jLabel2.setBounds(20, 230, 60, 23);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jLabel3.setText("Código: ");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(20, 70, 60, 24);
+        jLabel3.setBounds(20, 70, 60, 23);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jLabel4.setText("Marca:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(20, 110, 60, 24);
+        jLabel4.setBounds(20, 110, 60, 23);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jLabel5.setText("Línea:");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(20, 150, 60, 24);
+        jLabel5.setBounds(20, 150, 60, 23);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jLabel6.setText("Año:");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(20, 190, 60, 24);
+        jLabel6.setBounds(20, 190, 60, 23);
         jPanel2.add(input_codigo);
-        input_codigo.setBounds(100, 70, 140, 24);
+        input_codigo.setBounds(100, 70, 140, 20);
 
         jButton1.setText("Agregar auto");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +171,7 @@ public class Admin_frame extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(100, 280, 140, 24);
+        jButton1.setBounds(100, 280, 140, 23);
 
         input_marca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,13 +179,13 @@ public class Admin_frame extends javax.swing.JFrame {
             }
         });
         jPanel2.add(input_marca);
-        input_marca.setBounds(100, 110, 140, 26);
+        input_marca.setBounds(100, 110, 140, 20);
 
         jPanel2.add(input_linea);
-        input_linea.setBounds(100, 150, 140, 26);
+        input_linea.setBounds(100, 150, 140, 20);
 
         jPanel2.add(input_agnio);
-        input_agnio.setBounds(100, 190, 140, 26);
+        input_agnio.setBounds(100, 190, 140, 20);
         jPanel2.add(input_valor);
         input_valor.setBounds(100, 230, 140, 20);
 
@@ -195,29 +195,29 @@ public class Admin_frame extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jLabel7.setText("Descuento por servicio público (%):");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(28, 454, 228, 24);
+        jLabel7.setBounds(28, 454, 228, 23);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jLabel8.setText("Descuento por pronto pago (%): ");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(28, 412, 209, 24);
+        jLabel8.setBounds(28, 412, 209, 23);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jLabel9.setText("Descuento por traslado de cuenta (%):");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(30, 490, 248, 24);
+        jLabel9.setBounds(30, 490, 248, 23);
 
         descTCL.setText("jLabel10");
         getContentPane().add(descTCL);
-        descTCL.setBounds(300, 490, 70, 16);
+        descTCL.setBounds(300, 490, 70, 14);
 
         descPPL.setText("jLabel10");
         getContentPane().add(descPPL);
-        descPPL.setBounds(300, 410, 70, 16);
+        descPPL.setBounds(300, 410, 70, 14);
 
         descSPL.setText("jLabel10");
         getContentPane().add(descSPL);
-        descSPL.setBounds(300, 450, 70, 16);
+        descSPL.setBounds(300, 450, 70, 14);
 
         btn_panel_cambiar_desc.setText("Cambiar valores");
         btn_panel_cambiar_desc.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +226,7 @@ public class Admin_frame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_panel_cambiar_desc);
-        btn_panel_cambiar_desc.setBounds(380, 490, 140, 24);
+        btn_panel_cambiar_desc.setBounds(380, 490, 140, 23);
 
         btn_cambiar_desc.setText("Cambiar");
         btn_cambiar_desc.addActionListener(new java.awt.event.ActionListener() {
@@ -246,7 +246,7 @@ public class Admin_frame extends javax.swing.JFrame {
                     .addComponent(input_descPP, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(input_descSP, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(31, 31, 31)
-                .addComponent(btn_cambiar_desc, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addComponent(btn_cambiar_desc, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panel_descLayout.setVerticalGroup(
@@ -255,7 +255,7 @@ public class Admin_frame extends javax.swing.JFrame {
                 .addComponent(input_descPP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(input_descSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(input_descTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_descLayout.createSequentialGroup()
@@ -268,7 +268,7 @@ public class Admin_frame extends javax.swing.JFrame {
 
         jLabel10.setText("Admin");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(680, 20, 48, 16);
+        jLabel10.setBounds(680, 20, 48, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
