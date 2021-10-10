@@ -5,10 +5,12 @@
  */
 package Propietario;
 
-import Admin.Admin_frame;
+import Admin.*;
 import javax.swing.JOptionPane;
 import static pagoimpuestovehicular.Principal_frame.lista_vehiculos;
+import static pagoimpuestovehicular.Principal_frame.lista_vehiculos;
 import static java.lang.String.valueOf;
+import pagoimpuestovehicular.Vehiculo;
 
 /**
  *
@@ -22,7 +24,9 @@ public class Propietario_frame extends javax.swing.JFrame {
         mostrarTabla();
         setLocationRelativeTo(this);
     }
+   
     Admin_frame ap = new Admin_frame();
+    
 
  
     @SuppressWarnings("unchecked")
@@ -349,6 +353,7 @@ static public String opcion;
             matriz[i][4]=valueOf(lista_vehiculos.get(i).getValorI());
 
             //lista_vehiculos
+            //vehiculos_disponibles
         }
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             matriz,
