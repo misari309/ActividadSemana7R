@@ -6,11 +6,18 @@
 package Propietario;
 
 import Admin.*;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import static pagoimpuestovehicular.Principal_frame.lista_vehiculos;
 import static java.lang.String.valueOf;
-import pagoimpuestovehicular.Vehiculo;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import pagoimpuestovehicular.*;
+import static pagoimpuestovehicular.Principal_frame.descProntoPago;
+import static pagoimpuestovehicular.Principal_frame.descServPublico;
+import static pagoimpuestovehicular.Principal_frame.descTrasCuenta;
+
+
 
 /**
  *
@@ -28,7 +35,8 @@ public class Propietario_frame extends javax.swing.JFrame {
     Principal_frame ap = new Principal_frame();
     
     public static int Sub;
-    public static int Subtotal;
+    public static double Subtotal;
+    public static int total;
 
  
     @SuppressWarnings("unchecked")
@@ -54,6 +62,10 @@ public class Propietario_frame extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         boxServicioPublico = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtNombreCliente = new javax.swing.JTextField();
+        txtDocumento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -138,19 +150,23 @@ public class Propietario_frame extends javax.swing.JFrame {
 
         jLabel6.setText("VALOR : ");
 
+        jLabel8.setText("NOMBRE CLIENTE : ");
+
+        jLabel9.setText("N° DOCUMENTO : ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(147, 147, 147)
                         .addComponent(btnBuscar)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
@@ -178,11 +194,28 @@ public class Propietario_frame extends javax.swing.JFrame {
                                     .addComponent(boxServicioPublico)
                                     .addComponent(boxProntoPago)
                                     .addComponent(boxTransladoDeCuenta))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnImprimirComprobante)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtDocumento))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtNombreCliente)))
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap())
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnImprimirComprobante)
+                                        .addGap(35, 35, 35))))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(163, 163, 163)
                 .addComponent(jLabel1)
@@ -198,10 +231,7 @@ public class Propietario_frame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBuscar)
-                        .addGap(105, 105, 105)
-                        .addComponent(btnImprimirComprobante)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnBuscar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -222,15 +252,23 @@ public class Propietario_frame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(boxProntoPago)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boxProntoPago)
+                            .addComponent(jLabel9)
+                            .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(boxServicioPublico)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(boxTransladoDeCuenta)
-                        .addGap(28, 28, 28))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boxTransladoDeCuenta)
+                            .addComponent(btnImprimirComprobante))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -247,43 +285,109 @@ public class Propietario_frame extends javax.swing.JFrame {
     private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
         txtMarca.setEditable(false);
     }//GEN-LAST:event_txtMarcaActionPerformed
-static public String opcion;
+static public String opcion="";
+public static String ma="";
+public static String m="";
+public static String a="";
+public static String va="";
+public static String NombreC;
+public static String Documento;
+
+public static double descuentosT;
+    
     private void btnImprimirComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirComprobanteActionPerformed
         Factura ventana = new Factura();
-        //Comprobante ventanaComp = new Comprobante();
-        
-        //String mensaje = "seleciono la opcion : ";
-        opcion = "seleciono la opcion : ";
-        if(boxProntoPago.isSelected()/*&&boxServicioPublico.isSelected()&&boxTransladoDeCuenta.isSelected()*/){
-            //mensaje="PRONTO PAGO";
-            opcion= "PRONTO PAGO";
-        }
-        if(boxServicioPublico.isSelected()/*!=boxProntoPago.isSelected()!=boxTransladoDeCuenta.isSelected()*/){
-            //mensaje="SERVICIO PÚBLICO";
-            opcion= "SERIVCIO PÚBLICO";
-        }
-        if(boxTransladoDeCuenta.isSelected()/*!=boxProntoPago.isSelected()!=boxServicioPublico.isSelected()*/){
-            //mensaje="TRANSLADO DE CUENTA";
-        }
-        if(boxProntoPago.isSelected()&&boxServicioPublico.isSelected()&&boxTransladoDeCuenta.isSelected()){
-            // mensaje="SELECCIONO LOS TRES DESCUENTOS";
-            //JOptionPane.showMessageDialog(rootPane, "SELECCIONÓ : 3");
-        }
-        //System.out.println(mensaje);
-        //opcion = mensaje;
         ventana.setVisible(true);
-        this.setVisible(false);
+      
+        ma = txtMarca.getText();
+        m = txtModelo.getText();
+        a = txtAño.getText();
+        va = txtValor.getText();
+        NombreC = txtNombreCliente.getText();
+        Documento = txtDocumento.getText();
+        Sub = (int) Double.parseDouble(va);
+        Subtotal = Sub;
+        
+        
 
+        //PARA LOS DESCUENTOS
+ 
+        
+        if(boxServicioPublico.isSelected() ){
+            descuentosT = descServPublico * Sub;
+            Subtotal = Sub - descuentosT;
+            opcion = "SERVICIO PUBLICO";
+        }
+        
+        if(boxTransladoDeCuenta.isSelected()){
+            descuentosT = descTrasCuenta * Sub;
+            Subtotal = Sub - descuentosT ;
+            opcion = "TRANSLADO DE CUENTA ";
+        }
+        if(boxProntoPago.isSelected()){
+            descuentosT = descProntoPago * Sub;
+            Subtotal = Sub - descuentosT;
+            opcion = "PRONTO PAGO";
+        }
+        
+        
+        
+        
+        if (boxProntoPago.isSelected() && boxServicioPublico.isSelected()){
+            Subtotal = descProntoPago+descServPublico;
+            Subtotal = (Sub)-((descProntoPago+descServPublico)*Sub);
+            descuentosT = (descProntoPago+descServPublico)*Sub;
+            opcion = "PRONTO PAGO, SERVICIO PÚBLICO ";  
+        } 
+        if (boxProntoPago.isSelected() && boxTransladoDeCuenta.isSelected()){
+            Subtotal = descProntoPago+descTrasCuenta;
+            Subtotal = (Sub)-((descProntoPago+descTrasCuenta)*Sub);
+            descuentosT = (descProntoPago+descTrasCuenta)*Sub;
+            opcion = "PRONTO PAGO, TRANSLADO DE CUENTA";  
+            
+        }
+        if(boxServicioPublico.isSelected() && boxTransladoDeCuenta.isSelected() ){
+            Subtotal = descServPublico+descTrasCuenta;
+            Subtotal = (Sub)-((descServPublico+descTrasCuenta)*Sub);
+            descuentosT = (descServPublico+descTrasCuenta)*Sub;
+            opcion = "SERVICIO PUBLICO, TRANSLADO DE CUENTA"; 
+        }
+        if(boxProntoPago.isSelected()&& boxServicioPublico.isSelected()&& boxTransladoDeCuenta.isSelected() ){
+            Subtotal = (Sub)-((descProntoPago+descServPublico+descTrasCuenta)*Sub);
+            descuentosT = (descProntoPago+descServPublico+descTrasCuenta)*Sub;
+            opcion = "PRONTO PAGO, SERVICIO PÚBLICO,TRANSLADO DE CUENTA";
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        NombreC =leerNombre();
+        if(NombreC.length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "INGRESE NOMBRE DE CLIENTE");
+            txtNombreCliente.requestFocus();
+        }
+        
+        Documento = leerDocumento();
+            if(Documento.length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "INGRESE DOCUMENTO DEL CLIENTE");
+            txtDocumento.requestFocus();
+        }
+        
+            
+     
+       
+ 
     }//GEN-LAST:event_btnImprimirComprobanteActionPerformed
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
 
     }//GEN-LAST:event_txtCodigoActionPerformed
 
-    public static String ma="";
-    public static String m="";
-    public static String a="";
-    public static String va="";
+   
     
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
@@ -300,19 +404,10 @@ static public String opcion;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "INGRESE UN CÓDIGO VÁLIDO");
         }
-        
-                ma = txtMarca.getText();
-                m = txtModelo.getText();
-                a = txtAño.getText();
-                va = txtValor.getText();
-                
-                
-                Sub = Integer.parseInt(va);
-
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void boxProntoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxProntoPagoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_boxProntoPagoActionPerformed
     
     int leerCodigo(){
@@ -378,6 +473,25 @@ static public String opcion;
             
         });
     }
+    public void Limpiar(JPanel panel){
+        for (Object o : panel.getComponents()) {
+            if(o instanceof JLabel){
+                ((JLabel) o).setText("");
+            
+        }
+            
+        }
+        
+    }
+    String leerNombre(){
+       return txtNombreCliente.getText().trim();
+   }
+    String leerDocumento(){
+       return txtDocumento.getText().trim();
+   }
+   /*int leerDocumento(){
+       return Integer.parseInt(txtDocumento.getText().trim());
+   }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox boxProntoPago;
@@ -392,12 +506,16 @@ static public String opcion;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtAño;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
+    private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

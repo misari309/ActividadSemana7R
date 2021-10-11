@@ -32,11 +32,12 @@ public class Principal_frame extends javax.swing.JFrame {
         lista_vehiculos.add(new Vehiculo("RENAULT", "ZOE", "2016", 2, Float.parseFloat("13000")));
         lista_vehiculos.add(new Vehiculo("NISSAN", "SENTRA", "1995", 3, Float.parseFloat("7000")));
         
-        descProntoPago = 0.2;
-        descServPublico = 0.15;
-        descTrasCuenta = 0.1;
+         descProntoPago = 0.2;
+         descServPublico = 0.15;
+         descTrasCuenta = 0.1;
         
     }
+
     
     public Vehiculo buscar(int codigo){//ESTE METODO LO AGREGUE PARA PODER RETORNAR EL CDIGO Y BUSCAR LA INFORMACION PERTENENCIENTE AL MISMO..HC
         for (int i = 0; i <lista_vehiculos.size() ; i++) {
@@ -45,6 +46,7 @@ public class Principal_frame extends javax.swing.JFrame {
         }
         return null;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
