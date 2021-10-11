@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Propietario;
 
-import static Propietario.Propietario_frame.descuentosT;
+
 import static Propietario.Propietario_frame.*;
 import java.awt.Component;
+import static java.lang.String.valueOf;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,27 +17,27 @@ public class Factura extends javax.swing.JFrame {
     /**
      * Creates new form Factura
      */
-     Propietario_frame limp = new Propietario_frame();
-    Propietario_frame ventan = new Propietario_frame();
-    public Factura() {
+
+    public Factura(String cliente, String documento, String marca, String linea, String agnio, double valor, String descuentosApli, double totalDescuentos, double totalAPagar) {
         initComponents();
         setLocationRelativeTo(this);
         
-        impMarca.setText(ventan.ma);
-        impModelo.setText(ventan.m);
-        impAño.setText(ventan.a);
-        impValor.setText(ventan.va);
-        impDescuentosAplicados.setText(ventan.opcion);
+        impMarca.setText(marca);
+        impModelo.setText(linea);
+        impAño.setText(agnio);
+        impValor.setText(valueOf(valor));
+        impDescuentosAplicados.setText(descuentosApli);
 
-        int s = (int) Subtotal;
-        int d = (int) descuentosT;
-        impSubtotal.setText(""+s);
-        impTotalDescuentos.setText(""+d);
+        impSubtotal.setText(valueOf(totalAPagar));
+        impTotalDescuentos.setText(valueOf(totalDescuentos));
         
-        impNombreCliente.setText(ventan.NombreC);
-        impDocumento.setText(ventan.Documento);
+
      
         
+    }
+
+    private Factura() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 
@@ -258,7 +255,7 @@ public class Factura extends javax.swing.JFrame {
         //ventan.setVisible(true);
         this.setVisible(false);
         
-        /*impMarca.setText("");
+        impMarca.setText("");
         impModelo.setText("");
         impAño.setText("");
         impValor.setText("");
@@ -266,11 +263,8 @@ public class Factura extends javax.swing.JFrame {
         impTotalDescuentos.setText("");
         impDescuentosAplicados.setText("");
         impSubtotal.setText("");
-        impTotal.setText("");*/
         
-        ventan.Limpiar(jPanel1);
-        
-        
+            
     }//GEN-LAST:event_btnAceptarActionPerformed
     
     /**
