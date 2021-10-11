@@ -5,14 +5,12 @@
  */
 package Propietario;
 
-import Admin.*;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import static pagoimpuestovehicular.Principal_frame.lista_vehiculos;
 import static java.lang.String.valueOf;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import pagoimpuestovehicular.*;
+import Propietario.Factura;
 import static pagoimpuestovehicular.Principal_frame.descProntoPago;
 import static pagoimpuestovehicular.Principal_frame.descServPublico;
 import static pagoimpuestovehicular.Principal_frame.descTrasCuenta;
@@ -64,7 +62,7 @@ public class Propietario_frame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        boxTransladoDeCuenta.setText("TANSLADO DE CUENTA");
+        boxTransladoDeCuenta.setText("TRANSLADO DE CUENTA");
 
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
