@@ -8,6 +8,7 @@ package pagoimpuestovehicular;
 import Admin.Admin_frame;
 import Propietario.Propietario_frame;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,6 +61,7 @@ public class Principal_frame extends javax.swing.JFrame {
         btn_admin_frame = new javax.swing.JButton();
         btn_propietario_frame = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnAcercaDe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,16 +84,25 @@ public class Principal_frame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jLabel1.setText("Pago de Impuestos ");
 
+        btnAcercaDe.setText("ACERCA DE");
+        btnAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcercaDeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(119, 119, 119)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(btn_propietario_frame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                    .addComponent(btn_admin_frame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAcercaDe, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(btn_propietario_frame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                        .addComponent(btn_admin_frame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -103,7 +114,9 @@ public class Principal_frame extends javax.swing.JFrame {
                 .addComponent(btn_propietario_frame, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btn_admin_frame, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+                .addGap(18, 18, 18)
+                .addComponent(btnAcercaDe, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -120,6 +133,11 @@ public class Principal_frame extends javax.swing.JFrame {
         admin_frame.setVisible(true);
         
     }//GEN-LAST:event_btn_admin_frameActionPerformed
+
+    private void btnAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcercaDeActionPerformed
+       
+        JOptionPane.showMessageDialog(rootPane, "PROYECTO DESARROLLADO POR:\n "+"CAMILO SANCHEZ \n "+"HERMES CASTRO\n ");
+    }//GEN-LAST:event_btnAcercaDeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +175,7 @@ public class Principal_frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAcercaDe;
     private javax.swing.JButton btn_admin_frame;
     private javax.swing.JButton btn_propietario_frame;
     private javax.swing.JLabel jLabel1;
