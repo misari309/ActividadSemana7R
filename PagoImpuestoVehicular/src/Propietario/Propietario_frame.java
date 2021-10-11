@@ -31,12 +31,7 @@ public class Propietario_frame extends javax.swing.JFrame {
         mostrarTabla();
         setLocationRelativeTo(this);
     }
-   
-    Principal_frame ap = new Principal_frame();
     
-    public static int Sub;
-    public static double Subtotal;
-    public static int total;
 
  
     @SuppressWarnings("unchecked")
@@ -285,101 +280,49 @@ public class Propietario_frame extends javax.swing.JFrame {
     private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
         txtMarca.setEditable(false);
     }//GEN-LAST:event_txtMarcaActionPerformed
-static public String opcion="";
-public static String ma="";
-public static String m="";
-public static String a="";
-public static String va="";
-public static String NombreC;
-public static String Documento;
 
-public static double descuentosT;
     
     private void btnImprimirComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirComprobanteActionPerformed
-        Factura ventana = new Factura();
+        
+       String cliente, documento, marca, linea, agnio, descuentosApli = "";
+        double valor, totalDescuentos = 0, totalAPagar;
+        
+        cliente = txtNombreCliente.getText();
+        documento = txtDocumento.getText();
+        marca = txtMarca.getText();
+        linea = txtModelo.getText();
+        agnio = txtAño.getText();
+        valor = Double.parseDouble(txtValor.getText());
+        totalAPagar = valor;
+        
+        if (boxServicioPublico.isSelected() && boxTransladoDeCuenta.isSelected() && boxProntoPago.isSelected()) {
+            descuentosApli = "SERVICIO PÚBLICO, TRASLADO CUENTA, PRONTO PAGO";
+            totalDescuentos = valor*(descServPublico+descTrasCuenta+descProntoPago);
+            totalAPagar = valor-totalDescuentos;
+        }else{
+            if (boxServicioPublico.isSelected()) {
+                descuentosApli = " SERVICIO PÚBLICO ";
+                totalDescuentos = totalDescuentos + totalAPagar*descServPublico;
+                totalAPagar = totalAPagar-totalAPagar*descServPublico;
+                
+            }
+            if (boxTransladoDeCuenta.isSelected()) {
+                descuentosApli = descuentosApli + " TRASLADO CUENTA ";
+                totalDescuentos = totalDescuentos + totalAPagar*descTrasCuenta;
+                totalAPagar = totalAPagar-totalAPagar*descTrasCuenta;
+                
+            }
+            if (boxProntoPago.isSelected()) {
+                descuentosApli = descuentosApli + " PRONTO PAGO ";
+                totalDescuentos = totalDescuentos + totalAPagar*descProntoPago;
+                totalAPagar = totalAPagar-totalAPagar*descProntoPago;
+                
+            }
+        }
+        
+        
+        Factura ventana = new Factura(cliente, documento, marca, linea, agnio, valor, descuentosApli, totalDescuentos, totalAPagar);
         ventana.setVisible(true);
-      
-        ma = txtMarca.getText();
-        m = txtModelo.getText();
-        a = txtAño.getText();
-        va = txtValor.getText();
-        NombreC = txtNombreCliente.getText();
-        Documento = txtDocumento.getText();
-        Sub = (int) Double.parseDouble(va);
-        Subtotal = Sub;
-        
-        
-
-        //PARA LOS DESCUENTOS
- 
-        
-        if(boxServicioPublico.isSelected() ){
-            descuentosT = descServPublico * Sub;
-            Subtotal = Sub - descuentosT;
-            opcion = "SERVICIO PUBLICO";
-        }
-        
-        if(boxTransladoDeCuenta.isSelected()){
-            descuentosT = descTrasCuenta * Sub;
-            Subtotal = Sub - descuentosT ;
-            opcion = "TRANSLADO DE CUENTA ";
-        }
-        if(boxProntoPago.isSelected()){
-            descuentosT = descProntoPago * Sub;
-            Subtotal = Sub - descuentosT;
-            opcion = "PRONTO PAGO";
-        }
-        
-        
-        
-        
-        if (boxProntoPago.isSelected() && boxServicioPublico.isSelected()){
-            Subtotal = descProntoPago+descServPublico;
-            Subtotal = (Sub)-((descProntoPago+descServPublico)*Sub);
-            descuentosT = (descProntoPago+descServPublico)*Sub;
-            opcion = "PRONTO PAGO, SERVICIO PÚBLICO ";  
-        } 
-        if (boxProntoPago.isSelected() && boxTransladoDeCuenta.isSelected()){
-            Subtotal = descProntoPago+descTrasCuenta;
-            Subtotal = (Sub)-((descProntoPago+descTrasCuenta)*Sub);
-            descuentosT = (descProntoPago+descTrasCuenta)*Sub;
-            opcion = "PRONTO PAGO, TRANSLADO DE CUENTA";  
-            
-        }
-        if(boxServicioPublico.isSelected() && boxTransladoDeCuenta.isSelected() ){
-            Subtotal = descServPublico+descTrasCuenta;
-            Subtotal = (Sub)-((descServPublico+descTrasCuenta)*Sub);
-            descuentosT = (descServPublico+descTrasCuenta)*Sub;
-            opcion = "SERVICIO PUBLICO, TRANSLADO DE CUENTA"; 
-        }
-        if(boxProntoPago.isSelected()&& boxServicioPublico.isSelected()&& boxTransladoDeCuenta.isSelected() ){
-            Subtotal = (Sub)-((descProntoPago+descServPublico+descTrasCuenta)*Sub);
-            descuentosT = (descProntoPago+descServPublico+descTrasCuenta)*Sub;
-            opcion = "PRONTO PAGO, SERVICIO PÚBLICO,TRANSLADO DE CUENTA";
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-        NombreC =leerNombre();
-        if(NombreC.length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "INGRESE NOMBRE DE CLIENTE");
-            txtNombreCliente.requestFocus();
-        }
-        
-        Documento = leerDocumento();
-            if(Documento.length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "INGRESE DOCUMENTO DEL CLIENTE");
-            txtDocumento.requestFocus();
-        }
-        
-            
-     
-       
  
     }//GEN-LAST:event_btnImprimirComprobanteActionPerformed
 
@@ -391,19 +334,17 @@ public static double descuentosT;
     
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
-            int codigo = leerCodigo();
-            if(ap.buscar(codigo)!=null){
-                txtMarca.setText(ap.buscar(codigo).getMarca());
-
-                txtAño.setText(ap.buscar(codigo).getAgnio());
-                txtModelo.setText(ap.buscar(codigo).getLinea());
-                txtValor.setText(" "+ap.buscar(codigo).getValorI());
-                
-        
+            for (int i=0;i<lista_vehiculos.size();i++) {
+                if (txtCodigo.getText().equals(valueOf(lista_vehiculos.get(i).getCodigo()))) {
+                    txtMarca.setText(lista_vehiculos.get(i).getMarca());
+                    txtModelo.setText(lista_vehiculos.get(i).getLinea());
+                    txtAño.setText(lista_vehiculos.get(i).getAgnio());
+                    txtValor.setText(valueOf(lista_vehiculos.get(i).getValorI()));
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "INGRESE UN CÓDIGO VÁLIDO");
-        }
+	}
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void boxProntoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxProntoPagoActionPerformed
