@@ -30,6 +30,8 @@ public class Factura extends javax.swing.JFrame {
 
         impSubtotal.setText(valueOf(totalAPagar));
         impTotalDescuentos.setText(valueOf(totalDescuentos));
+        impNombreCliente.setText(cliente);
+        impDocumento.setText(documento);
         
 
      

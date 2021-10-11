@@ -321,6 +321,18 @@ public class Propietario_frame extends javax.swing.JFrame {
         
         Factura ventana = new Factura(cliente, documento, marca, linea, agnio, valor, descuentosApli, totalDescuentos, totalAPagar);
         ventana.setVisible(true);
+        
+        cliente =leerNombre();
+        if(cliente.length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "INGRESE NOMBRE DE CLIENTE");
+            txtNombreCliente.requestFocus();
+        }
+        
+        documento = leerDocumento();
+            if(documento.length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "INGRESE DOCUMENTO DEL CLIENTE");
+            txtDocumento.requestFocus();
+        }
  
     }//GEN-LAST:event_btnImprimirComprobanteActionPerformed
 
